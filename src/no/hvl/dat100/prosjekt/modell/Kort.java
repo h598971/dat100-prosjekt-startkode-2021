@@ -11,6 +11,7 @@ public class Kort implements Comparable<Kort> {
 
 	private Kortfarge farge;
 	private int verdi;
+	private String type;
 
 	/**
 	 * Oppretter et kort med gitt farge og verdi.
@@ -24,7 +25,7 @@ public class Kort implements Comparable<Kort> {
 		this.farge = farge;
 		this.verdi = verdi;
 	}
-
+	
 	/**
 	 * Gir fargen på kortet.
 	 * 
@@ -33,7 +34,24 @@ public class Kort implements Comparable<Kort> {
 	public Kortfarge getFarge() {
 		return farge;
 	}
-
+	
+	
+	public String getType() {
+		if (verdi == 13) {
+			this.type = "Konge";
+		} else if (verdi == 12) {
+			this.type = "Dronning";
+		} else if (verdi == 11) {
+			this.type = "Knekt";
+		} else if (verdi == 1) {
+			this.type = "Ess";
+		} else {
+			this.type = "Kort";
+		}
+		
+		return this.type;
+	}	
+	
 	/**
 	 * Setter ny farge
 	 * 

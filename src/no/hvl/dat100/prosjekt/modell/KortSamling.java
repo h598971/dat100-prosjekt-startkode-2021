@@ -148,16 +148,20 @@ public class KortSamling {
 	public Kort taSiste() {
 		
 		// TODO - START
-		//this.samling[0] = null;
+		// Sparer siste kort fordi det skal returneres.
+		Kort t = this.samling[0];
+		// Fjerner siste kortet.
 		fjern(this.samling[0]);
-		
+		// Flytter alle kort 1 plass ned.
 		for (int i=1; i < this.samling.length; i++) {
 			this.samling[i-1] = this.samling[i];
-		}
+		}		
 		
-		return this.samling[0];
+		return t;
+
 		// TODO - END
 	}
+	
 	
 	/**
 	 * Undersøker om et kort finst i samlinga.
@@ -169,17 +173,12 @@ public class KortSamling {
 	public boolean har(Kort kort) {
 		
 		// TODO - START
-		
-		//boolean contains = Arrays.stream(this.samling).contains(kort::equals);
-		
-		for (Kort i: this.samling) {
-			if (i == kort) {
-				return true;
-			}
+		if (kort == null) {
+			return false;
 		}
+		boolean contains = Arrays.stream(this.samling).anyMatch(x -> x == kort);
+		return contains;
 		
-		return false;
-		//throw new UnsupportedOperationException(TODO.method());
 		// TODO - END
 		
 	}
@@ -197,6 +196,11 @@ public class KortSamling {
 	public boolean fjern(Kort kort) {
 		
 		// TODO - START
+		
+		if (kort == null) {
+			return false;
+		}
+		
 		for (int i=0; i < this.antall+1; i++) {
 			if (this.samling[i] == kort) {
 				this.samling[i] = null;

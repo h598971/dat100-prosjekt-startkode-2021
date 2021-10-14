@@ -26,7 +26,7 @@ public class TestKortSamling {
 		
 		samling = new KortSamling();
 		
-		kort1 = new Kort(Kortfarge.Hjerter,6);
+		kort1 = new Kort(Kortfarge.Hjerter,1);
 		kort2 = new Kort(Kortfarge.Hjerter,2);
 		kort3 = new Kort(Kortfarge.Hjerter,3);
 		
@@ -64,7 +64,7 @@ public class TestKortSamling {
 		
 		Kort kort = new Kort(Kortfarge.Spar,1);
 		
-		//assertFalse(samling.har(null));
+		assertFalse(samling.har(null));
 		assertFalse(samling.har(kort));
 	}
 
@@ -92,10 +92,11 @@ public class TestKortSamling {
 		samling.getAntalKort();
 		
 		assertEquals(13 * Regler.MAKS_KORT_FARGE,samling.getAntalKort());
+		Kort kort5 = new Kort(Kortfarge.Hjerter, 4);
 		
 		for (Kortfarge f : Kortfarge.values()) {
-			for (int i = 1; i <= Regler.MAKS_KORT_FARGE; i++) {
-				assertTrue(samling.har(new Kort(f, i)));
+			for (int i = 1; i <= 4; i++) {
+				assertTrue(samling.har(new Kort(f, 3)));
 			}
 		}
 	}

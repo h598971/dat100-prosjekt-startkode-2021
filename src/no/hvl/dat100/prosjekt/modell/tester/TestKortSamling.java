@@ -33,8 +33,6 @@ public class TestKortSamling {
 		samling.leggTil(kort1);
 		samling.leggTil(kort2);
 		samling.leggTil(kort3);
-		
-		samling.getAllekort();
 	}
 
 	@Test
@@ -89,14 +87,10 @@ public class TestKortSamling {
 		KortSamling samling = new KortSamling();
 		
 		samling.leggTilAlle();
-		samling.getAntalKort();
-		
-		assertEquals(13 * Regler.MAKS_KORT_FARGE,samling.getAntalKort());
-		Kort kort5 = new Kort(Kortfarge.Hjerter, 4);
 		
 		for (Kortfarge f : Kortfarge.values()) {
-			for (int i = 1; i <= 4; i++) {
-				assertTrue(samling.har(new Kort(f, 3)));
+			for (int i = 1; i <= Regler.MAKS_KORT_FARGE; i++) {
+				assertTrue(samling.har(new Kort(f, i)));
 			}
 		}
 	}
@@ -124,7 +118,7 @@ public class TestKortSamling {
 		
 		setUp();
 		
-		assertEquals(kort1, samling.seSiste());
+		assertEquals(kort3, samling.seSiste());
 		
 		assertEquals(3, samling.getAntalKort());
 		
@@ -135,19 +129,19 @@ public class TestKortSamling {
 			
 		setUp();
 		
-		assertEquals(kort1, samling.taSiste());
+		assertEquals(kort3, samling.taSiste());
 		assertEquals(2, samling.getAntalKort());
 		
 		assertEquals(kort2, samling.taSiste());
 		assertEquals(1, samling.getAntalKort());
 		
-		assertEquals(kort3, samling.taSiste());
+		assertEquals(kort1, samling.taSiste());
 		assertEquals(0, samling.getAntalKort());
 		
 		assertNull(samling.taSiste());
 		
 	}
-
+	
 	@Test
 	public void Testfjern() {
 

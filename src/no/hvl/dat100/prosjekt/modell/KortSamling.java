@@ -43,7 +43,7 @@ public class KortSamling {
 	 */
 	public Kort[] getSamling() {
 
-		return samling;
+		return this.samling;
 		
 	}
 	
@@ -55,9 +55,7 @@ public class KortSamling {
 	public int getAntalKort() {
 		
 		// TODO - START
-		return this.antall;
-		//throw new UnsupportedOperationException(TODO.method());
-		
+		return this.antall;		
 		// TODO - END
 	}
 	
@@ -108,9 +106,6 @@ public class KortSamling {
 				this.leggTil(kort);
 			}
 		}
-		
-		
-		//throw new UnsupportedOperationException(TODO.method());
 		// TODO - END
 	}
 
@@ -120,8 +115,8 @@ public class KortSamling {
 	public void fjernAlle() {
 		
 		// TODO - START
-		this.samling = new Kort[0];
-		//throw new UnsupportedOperationException(TODO.method());
+		this.samling = new Kort[MAKS_KORT];
+		this.antall = 0;
 		// TODO - END
 	}
 	
@@ -134,7 +129,11 @@ public class KortSamling {
 	public Kort seSiste() {
 		
 		// TODO - START
-		return this.samling[0];
+		int counter = 0;
+		if (this.antall > 0) {
+			counter = this.antall-1;
+		}
+		return this.samling[counter];
 		// TODO - END
 		
 	}
@@ -148,15 +147,8 @@ public class KortSamling {
 	public Kort taSiste() {
 		
 		// TODO - START
-		// Sparer siste kort fordi det skal returneres.
-		Kort t = this.samling[0];
-		// Fjerner siste kortet.
-		fjern(this.samling[0]);
-		// Flytter alle kort 1 plass ned.
-		for (int i=1; i < this.samling.length; i++) {
-			this.samling[i-1] = this.samling[i];
-		}		
-		
+		Kort t = seSiste();
+		fjern(t);
 		return t;
 
 		// TODO - END
@@ -172,12 +164,23 @@ public class KortSamling {
 	 */
 	public boolean har(Kort kort) {
 		
-		// TODO - START
+		// TODO - START		
+		// Return false om kort er null.
 		if (kort == null) {
 			return false;
 		}
-		boolean contains = Arrays.stream(this.samling).anyMatch(x -> x == kort);
-		return contains;
+		// Looper gjennom og sjekke om objekter i samling med objekt i param. Ma bruke .equals fordi vi vil sammenligne objektets properties. 
+		for (int i=0; i < this.samling.length; i++) {
+			if (this.samling[i] != null) {
+				if (this.samling[i].equals(kort)) {
+					return true;
+				}
+			}
+		}
+		
+		return false;
+		//boolean contains = Arrays.stream(this.samling).anyMatch(x -> x == kort);
+	//	return contains;
 		
 		// TODO - END
 		
@@ -201,8 +204,8 @@ public class KortSamling {
 			return false;
 		}
 		
-		for (int i=0; i < this.antall+1; i++) {
-			if (this.samling[i] == kort) {
+		for (int i=0; i < this.samling.length; i++) {
+			if (this.samling[i].equals(kort)) {
 				this.samling[i] = null;
 				this.antall--;
 				return true;

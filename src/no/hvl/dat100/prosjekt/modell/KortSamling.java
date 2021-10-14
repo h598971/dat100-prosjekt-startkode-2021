@@ -179,8 +179,6 @@ public class KortSamling {
 		}
 		
 		return false;
-		//boolean contains = Arrays.stream(this.samling).anyMatch(x -> x == kort);
-	//	return contains;
 		
 		// TODO - END
 		
@@ -204,15 +202,20 @@ public class KortSamling {
 			return false;
 		}
 		
+		// Looper gjennom samling og sjekker om kort finnes is samling.
 		for (int i=0; i < this.samling.length; i++) {
-			if (this.samling[i].equals(kort)) {
-				this.samling[i] = null;
-				this.antall--;
-				return true;
-			}
+			// .equals failer hvis prøver å sjekke med null. Sjekker derfor kun elementer i samling som ikke er null.
+			if (this.samling[i] != null) {
+				if (this.samling[i].equals(kort)) {
+					// Fjerner elementet.
+					this.samling[i] = null;
+					this.antall--;
+					return true;
+				} 	
+			}	
 		}
 		return false;
-
+		
 		// TODO - END
 	}
 
@@ -225,9 +228,14 @@ public class KortSamling {
 	public Kort[] getAllekort() {
 		
 		// TODO - START
-		return this.samling;
-		//throw new UnsupportedOperationException(TODO.method());
-
+		Kort nySamling[] = new Kort[this.antall];
+		
+		for (int i=0; i < this.samling.length; i++)
+			if (this.samling[i] != null) {
+				nySamling[i] = this.samling[i];
+			}
+		
+		return nySamling;
 		// TODO - END
 	
 	}

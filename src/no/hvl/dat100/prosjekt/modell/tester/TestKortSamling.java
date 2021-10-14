@@ -216,8 +216,8 @@ public class TestKortSamling {
 		assertEquals(3,allekort.length);
 		
 		assertEquals(kort1,allekort[0]);
-		assertEquals(kort3,allekort[1]);
-		assertEquals(kort2,allekort[2]);
+		assertEquals(kort2,allekort[1]);
+		assertEquals(kort3,allekort[2]);
 		
 	}
 }

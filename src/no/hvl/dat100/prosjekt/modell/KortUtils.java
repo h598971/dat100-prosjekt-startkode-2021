@@ -64,7 +64,6 @@ public class KortUtils {
 			// Flytter kortet til random index i lista.
 			nySamling[i] = nySamling[randNumb];
 			nySamling[randNumb] = temp;
-		
 		}
 		// TODO - END
 	}

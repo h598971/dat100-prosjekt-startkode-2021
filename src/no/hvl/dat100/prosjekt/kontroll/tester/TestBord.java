@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import no.hvl.dat100.prosjekt.kontroll.Bord;
+import no.hvl.dat100.prosjekt.kontroll.ISpiller;
+import no.hvl.dat100.prosjekt.kontroll.Spill;
 import no.hvl.dat100.prosjekt.kontroll.dommer.Regler;
 import no.hvl.dat100.prosjekt.modell.Kort;
 import no.hvl.dat100.prosjekt.modell.KortSamling;
@@ -22,7 +24,7 @@ class TestBord {
 		assertNotNull(bord.getBunkeFra());
 		assertNotNull(bord.getBunkeTil());
 
-		assertEquals(13 * Regler.MAKS_KORT_FARGE,bord.getBunkeFra().getAntalKort());
+		assertEquals(4 * Regler.MAKS_KORT_FARGE,bord.getBunkeFra().getAntalKort());
 		assertEquals(0,bord.getBunkeTil().getAntalKort());
 
 		for (Kortfarge f : Kortfarge.values()) {
@@ -41,7 +43,7 @@ class TestBord {
 		assertNotNull(bord.getBunkeFra());
 		assertNotNull(bord.getBunkeTil());
 
-		assertEquals(13 * Regler.MAKS_KORT_FARGE, bord.antallBunkeFra());
+		assertEquals(Regler.MAKS_KORT_FARGE * 4, bord.antallBunkeFra());
 		assertEquals(0, bord.antallBunkeTil());
 	}
 

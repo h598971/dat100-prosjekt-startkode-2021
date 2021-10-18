@@ -23,8 +23,7 @@ public class Bord {
 	public Bord() {
 		bunkeFra = new KortSamling();
 		bunkeFra.leggTilAlle();
-//		TODO: Fjerne kommentar under når Kortutils.stokk er implementert
-//		KortUtils.stokk(bunkeFra);
+		KortUtils.stokk(bunkeFra);
 
 		bunkeTil = new KortSamling();
 	}
